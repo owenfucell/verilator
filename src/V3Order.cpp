@@ -1600,7 +1600,10 @@ void OrderProcess::processDomainsIterate(OrderEitherVertex* vertexp) {
         // This is a node which has only constant inputs, or is otherwise indeterminate.
         // It should have already been copied into the settle domain.  Presumably it has
         // inputs which we never trigger, or nothing it's sensitive to, so we can rip it out.
-        if (!domainp && vertexp->scopep()) domainp = (vvertexp && vvertexp->varScp()->varp()->isSigUserRWPublic()) ? m_comboDomainp : m_deleteDomainp;
+        if (!domainp && vertexp->scopep())
+            domainp = (vvertexp && vvertexp->varScp()->varp()->isSigUserRWPublic())
+                          ? m_comboDomainp
+                          : m_deleteDomainp;
     }
     //
     vertexp->domainp(domainp);
